@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        table,th,td{
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        th,td{
+            background-color: #96D4D4;
+            padding: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h2>The Result are as follows</h2>
+    <div>
+        <table> 
+            <tr>
+                <th>Debtor</th>
+                <th>Amount</th>
+                <th>Creditor</th>
+            </tr>
+            {% for t in trns %}
+            <tr>
+                <td>{{t[0]}}</td>
+                <td>₹{{t[2]}}</td>
+                <td>{{t[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </center>
+</body>
+</html>

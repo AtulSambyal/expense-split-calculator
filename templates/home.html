@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Split Calculator</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Expense Split Calculator</h1>
+    <div>
+        <h2 style="text-align: center;">Split bills for shared group expenses.</h2>
+    </div>
+
+    <div>
+        <center>
+        <form action="/details" method="post">
+            <h3>How many people in your group?</h3>
+            <input type="number" name="n" id="n" min="2" max="40">
+            <h3>Give Roadtrip Name</h3>
+            <input type="text" name="rt_name" id="rt_name">
+            <input type="submit" value="Go!">
+        </form>
+        </center>
+    </div>
+    
+</body>
+</html>
