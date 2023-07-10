@@ -10,6 +10,16 @@
             background-color:rgb(162, 213, 231);
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
+        input{
+            margin: 10px;
+        }
+        #det{
+            border:1px solid black;
+            margin:8px;
+            margin-left: 30%;
+            margin-right: 30%;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -21,11 +31,11 @@
         <form action="/calculate" method="post" class="frm">
         <p>Fill Details of Each Person</p>
         {% for i in range(1,n+1) %}
-        <div >
+        <div id="det">
             <h2>Person {{i}}</h2>
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" value="name {{i}}" >
-            <div>
+            <div id="detail">
                 <label for="amount">Amount:</label>
                 <input type="number" name="amount" id="amount" min="0" value="0" required>
                 <!-- <h3>Who Shares:</h3> -->
