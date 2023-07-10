@@ -33,22 +33,22 @@ def trip_amount_split():
         negative_amounts = {person: -amount for person, amount in amounts.items() if amount < 0}
 
         while positive_amounts and negative_amounts:
-            creditor = max(positive_amounts, key=positive_amounts.get)
-            debtor = max(negative_amounts, key=negative_amounts.get)
+            creditor = min(positive_amounts, key=positive_amounts.get)
+            debtor = min(negative_amounts, key=negative_amounts.get)
 
             credit_amount = positive_amounts[creditor]
             debit_amount = negative_amounts[debtor]
 
-            if credit_amount > debit_amount:
-                simplified_amounts.append((debtor, creditor, debit_amount))
-                positive_amounts[creditor] -= debit_amount
+            if credit_amount > abs(debit_amount):
+                simplified_amounts.append((debtor, creditor, abs(debit_amount)))
+                positive_amounts[creditor] -= abs(debit_amount)
                 del negative_amounts[debtor]
-            elif credit_amount < debit_amount:
+            elif credit_amount < abs(debit_amount):
                 simplified_amounts.append((debtor, creditor, credit_amount))
-                positive_amounts[creditor] = 0
-                negative_amounts[debtor] -= credit_amount
+                negative_amounts[debtor] = abs(debit_amount) - credit_amount
+                del positive_amounts[creditor]
             else:
-                simplified_amounts.append((debtor, creditor, debit_amount))
+                simplified_amounts.append((debtor, creditor, abs(debit_amount)))
                 del positive_amounts[creditor]
                 del negative_amounts[debtor]
 
@@ -62,7 +62,7 @@ def trip_amount_split():
 
     transactions = simplify_amounts(amounts)
 
-    return render_template("result.html",trns=transactions)
+    return render_template("result.html",trns=transactions,avg=average_spent)
     
 @app.route("/details",methods=['POST'])
 def details():
